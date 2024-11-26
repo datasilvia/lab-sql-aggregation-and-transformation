@@ -25,11 +25,8 @@ FROM
 
 SELECT * FROM rental;
 SELECT 
-    rental_date,
-    return_date,
-    DATEDIFF(return_date, rental_date) AS rental_duration
-FROM 
-    rental;
+    DATEDIFF(MAX(rental_date), MIN(rental_date)) AS rental_duration
+FROM rental;
     
 -- 2.2 Retrieve rental information and add two additional columns to show the month and weekday of the rental. Return 20 rows of results.
 
