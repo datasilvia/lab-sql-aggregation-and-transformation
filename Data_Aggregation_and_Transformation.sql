@@ -7,11 +7,9 @@ SELECT * FROM actor;
 
 -- 1.1 Determine the shortest and longest movie durations and name the values as max_duration and min_duration.
 
-SELECT max(length) as max_duration
-	FROM film;
- 
-SELECT min(length)  as min_duration
-	FROM film;
+SELECT max(length) as max_duration,
+	   min(length)  as min_duration
+FROM film;
     
 -- 1.2. Express the average movie duration in hours and minutes. Don't use decimals.
 -- Hint: Look for floor and round functions.
@@ -114,20 +112,20 @@ FROM film
 GROUP BY rating
 ORDER BY number_of_films DESC;
 
--- 2. Using the film table, determine:
+--  Using the film table, determine:
 -- 2.1 The mean film duration for each rating, and sort the results in descending order of the mean duration. 
 -- Round off the average lengths to two decimal places. This will help identify popular movie lengths for each category.
 
 SELECT rating,
-   ROUND(AVG(length), 2) AS mean_duration
+   ROUND(AVG(length), 2) AS avg_duration
 FROM film
 GROUP BY rating
-ORDER BY mean_duration DESC; 
+ORDER BY avg_duration DESC; 
 
 -- 2.2 Identify which ratings have a mean duration of over two hours in order to help select films for customers who prefer longer movies.
 
 SELECT rating, 
-    ROUND(AVG(length), 2) AS mean_duration 
+    ROUND(AVG(length), 2) AS avg_duration 
 FROM film 
 GROUP BY rating 
 HAVING avg_duration > 120; 
